@@ -4,6 +4,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -20,38 +22,25 @@ class Search : AppCompatActivity() {
 
     private val faculties = ArrayList<Faculty>()
     private val time:Long = 40
-
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     private fun update() {
 
         runOnUiThread {
 
-            val to = intArrayOf(R.id.name, R.id.info,R.id.score)
-            val from = arrayOf("number + name", "info","score")
+            viewManager = LinearLayoutManager(this)
+            viewAdapter = MyAdapter(faculties)
 
-            val data = ArrayList<HashMap<String, Any>>()
-            for (i in faculties) {
-                val faculty = HashMap<String, Any>()
-                faculty[from[0]] = i.name
-                if(i.price != 0)
-                    faculty[from[1]] = i.address + "\n" + "платно: " + i.price + " рублей"
-                else
-                    faculty[from[1]] = i.address + "\n" + "Бюджет"
-                faculty[from[2]] =  i.score
-                data.add(faculty)
-            }
+            recyclerView = findViewById<RecyclerView>(R.id.list).apply {
 
-            val adapter = SimpleAdapter(
-                applicationContext,
-                data, R.layout.faculty, from, to
-            )
+                setHasFixedSize(true)
 
-            list.adapter = adapter
+                layoutManager = viewManager
 
-            list.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
-                val profile = Intent(this,Profile::class.java)
-                profile.putExtra("faculty",faculties[i])
-                startActivity(profile)
+                adapter = viewAdapter
+
             }
 
             progress.visibility = View.INVISIBLE
@@ -82,18 +71,21 @@ class Search : AppCompatActivity() {
         setContentView(R.layout.activity_search)
 
 
-     //   faculties.add(Faculty("Строительство и эксплуатация зданий и сооружений","",1,"",
-     //       1,"г.Калининград ул.Можайская д.60  \n   Обучение: платное 170000000000000",true,true,true,true,true))
-
 
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Data")
         val myQuery = myRef.orderByChild("type")
 
+        var isFirst = true
 
         myQuery.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                 faculties.add(dataSnapshot.getValue<Faculty>(Faculty::class.java)!!)
+
+                if(isFirst){
+                    isFirst = false
+                    updateWithPause()
+                }
 
                 if(!faculties.last().live ||
                     faculties.last().score > intent.getDoubleExtra("score",3.0) ||
@@ -123,10 +115,6 @@ class Search : AppCompatActivity() {
 
             }
         })
-
-
-
-        updateWithPause()
 
 
 
