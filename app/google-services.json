@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "288015025281",
+    "firebase_url": "https://spokaliningrad.firebaseio.com",
+    "project_id": "spokaliningrad",
+    "storage_bucket": "spokaliningrad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288015025281:android:ccdac4ede99cf3c3",
+        "android_client_info": {
+          "package_name": "com.example.asus.spo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288015025281-712ig1bubcrl7ghejvrhn5vrsorhnlhg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asus.spo",
+            "certificate_hash": "027499588ee8cf100fb3f1348150c2f79a56ee56"
+          }
+        },
+        {
+          "client_id": "288015025281-338j2135uub6o3fdvafolapg26g2p1qk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd1hEJhfaMMOXO2Tuu3xDo7ESulpUx_y8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "288015025281-338j2135uub6o3fdvafolapg26g2p1qk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

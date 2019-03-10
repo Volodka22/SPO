@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SPO</string>
+    <string name="find_suz">Найти СУЗ</string>
+    <string name="score">Введите средний балл в аттестате</string>
+    <string name="paid">Готов учиться платно</string>
+    <string name="region">Готов учиться в области</string>
+    <string name="service">Сфера обслуживания</string>
+    <string name="engineering">Инженерия</string>
+    <string name="medicine">Медицина</string>
+    <string name="short_info">Краткая информация</string>
+    <string name="call">позвонить</string>
+    <string name="link">перейти на сайт</string>
+</resources>
