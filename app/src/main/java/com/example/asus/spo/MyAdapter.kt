@@ -38,12 +38,12 @@ class MyAdapter(private val facultys: ArrayList<Faculty>) :
 
         val faculty = facultys[position]
         holder.nameView.text = faculty.name
-        if(faculty.price != 0)
+        if(faculty.price != "0")
             holder.infoView.text = faculty.address + "\n" + "платно: " + faculty.price + " рублей"
         else
             holder.infoView.text = faculty.address + "\n" + "Бюджет"
 
-        holder.scoreView.text = faculty.score.toString()
+        holder.scoreView.text = "Необходимый для поступления балл: " + faculty.score.toString()
 
         holder.itemView.setOnClickListener{
             val profile = Intent(holder.itemView.context,Profile::class.java)

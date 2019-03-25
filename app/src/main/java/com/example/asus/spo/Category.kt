@@ -25,9 +25,10 @@ class Category : AppCompatActivity() {
         searchIntent.putExtra("score",intent.getDoubleExtra("score",3.0))
 
 
-        categories.add("Инженерия")
-        categories.add("Сфера обслуживания")
         categories.add("Медицина")
+        categories.add("Ремонт и строительство")
+        categories.add("Техник")
+        categories.add("Социальные и экономические")
 
         val to = intArrayOf(R.id.category)
         val from = arrayOf("name")

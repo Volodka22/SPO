@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_search.*
 import java.util.*
+import java.util.Collections.sort
 
 class Search : AppCompatActivity() {
 
@@ -51,6 +52,16 @@ class Search : AppCompatActivity() {
     }
 
 
+    private fun sortList(){
+        faculties.sortWith(Comparator { p1, p2 ->
+            when {
+                p1.score.toDouble() > p2.score.toDouble() -> 1
+                p1.score == p2.score -> 0
+                else -> -1
+            }
+        })
+    }
+
     private fun updateWithPause(){
         val timer = Timer()
 
@@ -60,6 +71,7 @@ class Search : AppCompatActivity() {
             progress.progress++
             if (progress.progress >= time) {
                 progress.progress = 0
+                sortList()
                 update()
                 timer.cancel()
             }
@@ -73,7 +85,7 @@ class Search : AppCompatActivity() {
 
 
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("Data")
+        val myRef = database.getReference("Лист1")
         val myQuery = myRef.orderByChild("type")
 
         var isFirst = true
@@ -87,10 +99,10 @@ class Search : AppCompatActivity() {
                     updateWithPause()
                 }
 
-                if(!faculties.last().live ||
-                    faculties.last().score > intent.getDoubleExtra("score",3.0) ||
-                    (faculties.last().region && !intent.getBooleanExtra("findInRegion",false)) ||
-                    (faculties.last().price != 0 && !intent.getBooleanExtra("isPaid",false)) ||
+                if(faculties.last().live == "false" ||
+                    faculties.last().score.toDouble() > intent.getDoubleExtra("score",3.0) ||
+                    (faculties.last().region == "true" && !intent.getBooleanExtra("findInRegion",false)) ||
+                    (faculties.last().price != "0" && !intent.getBooleanExtra("isPaid",false)) ||
                     faculties.last().category != intent.getStringExtra("category")
                 )
 

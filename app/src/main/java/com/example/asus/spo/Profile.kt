@@ -26,11 +26,14 @@ class Profile : AppCompatActivity() {
         information += "Адрес: " + faculty.address + "\n"
         information += "Бюджетных мест: " + faculty.count + "\n"
         information += "Ссылка на сайт: " + faculty.link + "\n"
-        information += if(faculty.price == 0) "Бюджет\n"
-                else "Стоимость обучения: " + faculty.price.toString() + "\n"
+        information += if(faculty.price == "0") "Бюджет\n"
+                else "Стоимость обучения: " + faculty.price + "\n"
         information += "Форма обучения: "
-        information += if(faculty.intramural) "очная\n"
-                else "заочная\n"
+        information += when {
+            faculty.intramural == "1" -> "очная\n"
+            faculty.intramural == "2" -> "заочная\n"
+            else -> "очно-заочная\n"
+        }
         info.text = information
 
         link.setOnClickListener {

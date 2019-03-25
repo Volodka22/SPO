@@ -7,16 +7,16 @@ class Faculty() : Serializable {
     var category = ""
     var name:String = ""
     var number:String = ""
-    var price:Int = 1
+    var price:String = "1"
     var continuance:String = ""
-    var score:Double = 0.0
+    var score:String = "0.0"
     var address:String = ""
-    var region:Boolean = false
-    var intramural:Boolean = false
-    var live:Boolean = false
-    var new:Boolean = false
+    var region:String = "false"
+    var intramural:String = "1"
+    var live:String = "false"
+    var new:String = "false"
     var link:String = ""
-    var count:Int = 25
+    var count:String = "25"
 
 
 }
