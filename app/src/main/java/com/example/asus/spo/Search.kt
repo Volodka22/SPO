@@ -1,11 +1,11 @@
 package com.example.asus.spo
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -23,18 +23,18 @@ class Search : AppCompatActivity() {
 
     private val faculties = ArrayList<Faculty>()
     private val time:Long = 40
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
+    private lateinit var viewAdapter: androidx.recyclerview.widget.RecyclerView.Adapter<*>
+    private lateinit var viewManager: androidx.recyclerview.widget.RecyclerView.LayoutManager
 
     private fun update() {
 
         runOnUiThread {
 
-            viewManager = LinearLayoutManager(this)
+            viewManager = androidx.recyclerview.widget.LinearLayoutManager(this)
             viewAdapter = MyAdapter(faculties)
 
-            recyclerView = findViewById<RecyclerView>(R.id.list).apply {
+            recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.list).apply {
 
                 setHasFixedSize(true)
 

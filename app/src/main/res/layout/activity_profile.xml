@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,7 +8,7 @@
         tools:context=".Profile">
 
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="22sp"
@@ -17,7 +17,7 @@
             android:gravity="center"
             android:id="@+id/name"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -25,9 +25,10 @@
             android:id="@+id/info"
             android:textSize="15sp"
             android:lineSpacingExtra="10dp"/>
-    <Button
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
+    <com.google.android.material.button.MaterialButton
+            android:backgroundTint="#808080"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -35,9 +36,10 @@
             android:id="@+id/call"
             app:layout_constraintTop_toBottomOf="@+id/info"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+            android:backgroundTint="#808080"
             android:layout_width="140dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
@@ -48,4 +50,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

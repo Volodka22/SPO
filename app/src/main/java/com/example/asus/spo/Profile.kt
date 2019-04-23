@@ -1,6 +1,6 @@
 package com.example.asus.spo
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_profile.*
 import android.R.attr.dial
@@ -27,7 +27,7 @@ class Profile : AppCompatActivity() {
         information += "Бюджетных мест: " + faculty.count + "\n"
         information += "Ссылка на сайт: " + faculty.link + "\n"
         information += if(faculty.price == "0") "Бюджет\n"
-                else "Стоимость обучения: " + faculty.price + "\n"
+                else "Стоимость обучения: " + faculty.price + " р/семестр\n"
         information += "Форма обучения: "
         information += when {
             faculty.intramural == "1" -> "очная\n"
