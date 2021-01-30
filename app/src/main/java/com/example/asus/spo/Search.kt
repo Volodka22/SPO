@@ -55,7 +55,7 @@ class Search : AppCompatActivity() {
     private fun sortList(){
         faculties.sortWith(Comparator { p1, p2 ->
             when {
-                p1.score.toDouble() > p2.score.toDouble() -> 1
+                p1.score.replace(",",".").toDouble() > p2.score.replace(",",".").toDouble() -> 1
                 p1.score == p2.score -> 0
                 else -> -1
             }
@@ -100,7 +100,7 @@ class Search : AppCompatActivity() {
                 }
 
                 if(faculties.last().live == "false" ||
-                    faculties.last().score.toDouble() > intent.getDoubleExtra("score",3.0) ||
+                    (faculties.last().score.replace(",",".")).toDouble() > intent.getDoubleExtra("score",3.0) ||
                     (faculties.last().region == "true" && !intent.getBooleanExtra("findInRegion",false)) ||
                     (faculties.last().price != "0" && !intent.getBooleanExtra("isPaid",false)) ||
                     faculties.last().category != intent.getStringExtra("category")
